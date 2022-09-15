@@ -31,10 +31,16 @@ const App = () => {
     });
   };
 
+  const addItem = text => {
+    setItems(prevItems => {
+      return [{id: uuid.v4(), text}, ...prevItems];
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Header />
-      <AddItem />
+      <AddItem addItem={addItem} />
       <FlatList
         data={items}
         renderItem={({item}) => (
